@@ -23,7 +23,7 @@
                     <input type="password" name="password" placeholder="パスワード" >
                 </div>
                 <div class="main__check">
-                    <input type="password" name="check" placeholder="確認用パスワード">
+                    <input type="password" name="password_confirmation" placeholder="確認用パスワード">
                 </div>
                 <div class="button">
                     <button class="button__submit">会員登録</button>

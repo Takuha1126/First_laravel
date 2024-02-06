@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Work;
+use App\Models\Address;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class WorkController extends Controller
 {
     public function index() {
-        return view('index');
+        $user = Work::all();
+        return view('index',["user" => $user]);
     }
     public function create(Request $request) {
         $work = Carbon::now();

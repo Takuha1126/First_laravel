@@ -20,11 +20,12 @@
                     <input type="password" name="password" placeholder="パスワード">
                 </div>
                 <div class="button">
-                    <button class="button__submit">ログイン</button>
+                    <button class="button__submit" type="submit">ログイン</button>
                 </div>
             </form>
             <div class="login">
-                <form class="form__second" action="" method="post">
+                <form class="form__second" action="/register" method="post">
+                    @csrf
                     <div class="login__item">
                         <p class="login__p">アカウントをお持ちでない方はこちら</p>
                         <a class="login__button" href="/register">会員登録</a>

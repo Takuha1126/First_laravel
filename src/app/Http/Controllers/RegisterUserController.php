@@ -7,6 +7,9 @@ use App\Models\Address;
 
 class RegisterUserController extends Controller
 {
+    public function register(Request $request){
+            return view('auth.register');
+    }
     public function create(Request $request) {
     Address::create([
         "name" => $request->name,
@@ -15,4 +18,7 @@ class RegisterUserController extends Controller
     ]);
     return redirect("/");
 }
+    public function store(Request $request){
+
+    }
 }

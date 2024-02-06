@@ -17,13 +17,9 @@ use App\Http\Controllers\ContentController;
 |
 */
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [AuthenticatedSessionController::class, 'index']);
-  });
-Route::post('/',[WorkController::class, 'create']);
-Route::post('/store', [WorkController::class,'store']);
-Route::post('/register', [RegisterUserController::class, 'create']);
-
-Route::post('/store',[RegisterUserController::class,'store']);
-
-Route::get('/attendance',[ContentController::class,'attendance']);
+Route::get('/',[WorkController::class,'index']);
+Route::post('/',[WorkController::class,'create']);
+Route::get('/login', [AuthenticatedSessionController::class,'login']);
+Route::post('/login',[AuthenticatedSessionController::class,'store']);
+Route::get('/register',[RegisterUserController::class,'register']);
+Route::post('/register',[RegisterUserController::class,'create']);

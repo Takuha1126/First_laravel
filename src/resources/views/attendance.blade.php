@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/attendance.css') }}">
+<link rel="stylesheet" href="{{ asset('css/page.css') }}">
 @endsection
 
 @section('content')
@@ -39,7 +40,7 @@
         </table>
     </div>
     <div class="last__page">
-        <!--ページネーション-->
+        <p>{{ $authors->links('vendor.pagination.bootstrap-4') }}</p>
     </div>
     </div>
 </div>

@@ -9,6 +9,7 @@
     @yield('css')
 </head>
 <body>
+
     <header class="header">
         <div class="header__inner">
             <div class="header__title">
@@ -21,12 +22,14 @@
                 <form>
                     <a class="content__button">日付</a>
                 </form>
-                <form>
-                    <a class="login__button" href="/login">ログイン</a>
+                <form action="/logout" method="post">
+                    <a class="login__button" href="/login">ログアウト</a>
                 </form>
             </nav>
         </div>
+        
     </header>
+
 
     <main>
         @yield('content')
