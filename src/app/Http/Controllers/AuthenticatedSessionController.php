@@ -17,10 +17,10 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
     public function store(LoginRequest $request) {
-        $user = Address::find($user_id);
+        $user_id = Auth::id();
         $email = $request->only('email');
         $password = $request->only('password');
-        if(Hash::check($password,$user->password)){
+        if(Hash::check($password,$user_id->password)){
         return view('index');
         }else{
             return view('login');
