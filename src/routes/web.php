@@ -17,9 +17,11 @@ use App\Http\Controllers\ContentController;
 |
 */
 
-Route::get('/',[WorkController::class,'index']);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', [WorkController::class, 'index'])->name('home');
+});
 Route::post('/',[WorkController::class,'create']);
-Route::get('/login', [AuthenticatedSessionController::class,'login']);
+Route::get('/login/{credentials', [AuthenticatedSessionController::class,'login']);
 Route::post('/login',[AuthenticatedSessionController::class,'store']);
 Route::get('/register',[RegisterUserController::class,'register']);
 Route::post('/register',[RegisterUserController::class,'create']);

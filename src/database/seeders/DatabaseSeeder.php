@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(WorkTableSeeder::class);
-        Address::factory(10)->create();
+
     }
 }

@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\DB;
 class WorkController extends Controller
 {
     public function index() {
-        $user = Work::all();
-        return view('index',["user" => $user]);
+        return view('/');
     }
     public function create(Request $request) {
         $work = Carbon::now();

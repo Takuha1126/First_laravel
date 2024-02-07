@@ -8,7 +8,7 @@
 <div class="main">
     <div class="main__inner">
         <div class="main__title">
-            <p class="main__title-ttl"><?php $user = Auth::user(); ?>{{ optional($user)->name }}さんお疲れ様です</p>
+            <p class="main__title-ttl">さんお疲れ様です</p>
         </div>
         <div class="main__button">
             <form action="/" method="post">
