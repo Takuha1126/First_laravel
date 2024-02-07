@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
     public function store(LoginRequest $request) {
-        $user_id = Auth::id();
+        $user = Auth::user();
         $email = $request->input('email');
         $password = $request->input('password');
         $hashedPassword = Address::where('email', $email)->first();
@@ -27,7 +27,7 @@ class AuthenticatedSessionController extends Controller
         }else{
             return view('auth.login');
         }
-        
+        return $user;
 
 }
 }
