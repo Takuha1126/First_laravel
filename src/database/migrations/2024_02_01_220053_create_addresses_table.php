@@ -15,7 +15,6 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('user_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('email');
             $table->string('password');

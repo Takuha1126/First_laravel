@@ -20,7 +20,7 @@ class RegisterUserController extends Controller
         "email" => $request->email,
         "password" => Hash::make($request->password),
     ]);
-    return redirect("/");
+    return view("index");
 }
     public function store(Request $request){
 

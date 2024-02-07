@@ -18,12 +18,14 @@ class AuthenticatedSessionController extends Controller
     }
     public function store(LoginRequest $request) {
         $user_id = Auth::id();
-        $email = $request->only('email');
-        $password = $request->only('password');
-        if(Hash::check($password,$user_id->password)){
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $hashedPassword = Address::where('email', $email)->first();
+
+        if($hashedPassword && Hash::check($password, $hashedPassword->password)){
         return view('index');
         }else{
-            return view('login');
+            return view('auth.login');
         }
         
 
