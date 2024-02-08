@@ -20,15 +20,16 @@
                 <th class="main__table-th">休憩時間</th>
                 <th class="main__table-th">勤務時間</th>
             </tr>
+            @foreach($authors as $author)
             <tr class="main__table-about">
                 <td class="main__table-td">
-                    <input  type="text" name="name" value="サンプルテキスト">
+                    <input  type="text" name="name" value="{{$authors['name']}}">
                 </td>
                 <td class="main__table-td">
-                    <input type="type" name="start__time" value="サンプルテキスト">
+                    <input type="type" name="start__time" value="{{$authors['start_time']}}">
                 </td>
                 <td class="main__table-td">
-                    <input type="type" name="end__time" value="サンプルテキスト">
+                    <input type="type" name="end__time" value="{{$authors['end_time']}}">
                 </td>
                 <td class="main__table-td">
                     <input type="type" name="rest__time" value="サンプルテキスト">
@@ -37,6 +38,7 @@
                     <input type="type" name="work__time" value="サンプルテキスト">
                 </td>
             </tr>
+            @endforeach
         </table>
     </div>
     <div class="last__page">

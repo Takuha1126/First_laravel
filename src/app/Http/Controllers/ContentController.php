@@ -8,10 +8,16 @@ use App\Models\Work;
 class ContentController extends Controller
 {
     public function attendance() {
-        $authors = Work::paginate(5)->onEachSide(1);
-        return view ('attendance', compact('authors'));
+        $authors = Work::all();
+        return view ('attendance',['authors' => $authors->toQuery()->paginate(5)]);
     }
-    public function store(){
+    
+    public function store(Request $request){
+        $author = $request->all();
+        Work::create($author);
+
+        return redirect('attendance');
+
 
     }
 }

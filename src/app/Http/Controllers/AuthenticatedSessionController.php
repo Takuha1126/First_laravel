@@ -12,22 +12,25 @@ use App\Models\Address;
 
 class AuthenticatedSessionController extends Controller
 {
+
     public function login() {
         $user = Auth::user();
         return view('auth.login');
     }
     public function store(LoginRequest $request) {
-        $user = Auth::user();
+        $user = Auth::user()->name;
+        dd($user);
         $email = $request->input('email');
         $password = $request->input('password');
         $hashedPassword = Address::where('email', $email)->first();
+         return view('index');
+
 
         if($hashedPassword && Hash::check($password, $hashedPassword->password)){
         return view('index');
         }else{
             return view('auth.login');
         }
-        return $user;
-
+       
 }
 }
