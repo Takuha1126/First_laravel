@@ -2,13 +2,14 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/error.css') }}">
 @endsection
 
 @section('content')
 
 <div class="main">
 @if (count($errors) > 0)
-<p>入力に問題があります</p>
+<p class="error-title">入力に問題があります</p>
 @endif
     <div class="main__inner">
         <div class="main__title">

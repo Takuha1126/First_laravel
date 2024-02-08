@@ -2,13 +2,19 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('css/error.css') }}">
 @endsection
 
 @section('content')
 
 <div class="main">
     @if (count($errors) > 0)
-    <p>入力に問題があります</p>
+    <p class="error-title">入力に問題があります</p>
+    @endif
+    @if (session('flash_message'))
+        <div class="flash_message">
+            {{ session('flash_message') }}
+        </div>
     @endif
     <div class="main__inner">
         <div class="main__title">
@@ -43,6 +49,11 @@
                 </div>
                 <div class="main__check">
                     <input type="password" name="password_confirmation" placeholder="確認用パスワード">
+                </div>
+                <div class="error">
+                @error('password_confirmation')
+                {{$errors->first('password_confirmation')}}
+                @enderror
                 </div>
                 <div class="button">
                     <button class="button__submit">会員登録</button>

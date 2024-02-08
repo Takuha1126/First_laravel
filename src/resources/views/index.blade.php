@@ -6,9 +6,14 @@
 
 @section('content')
 <div class="main">
+    @if (session('flash_message'))
+        <div class="flash_message">
+            {{ session('flash_message') }}
+        </div>
+    @endif
     <div class="main__inner">
         <div class="main__title">
-            <p class="main__title-ttl">{{ $user }}さんお疲れ様です</p>
+            <p class="main__title-ttl">{{ $user }}さんお疲れ様です!</p>
         </div>
         <div class="main__button">
             <form action="/" method="post">
