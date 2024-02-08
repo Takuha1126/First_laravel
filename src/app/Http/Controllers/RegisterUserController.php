@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class RegisterUserController extends Controller
 {
     public function register(Request $request){
-            return view('auth.register')->with('flash_message','会員登録しました');
+            return redirect('auth.register');
     }
     public function create(RegisterRequest $request) {
     $user = Address::create([

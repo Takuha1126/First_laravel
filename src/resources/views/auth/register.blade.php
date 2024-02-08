@@ -11,11 +11,7 @@
     @if (count($errors) > 0)
     <p class="error-title">入力に問題があります</p>
     @endif
-    @if (session('flash_message'))
-        <div class="flash_message">
-            {{ session('flash_message') }}
-        </div>
-    @endif
+    
     <div class="main__inner">
         <div class="main__title">
             <p class="main__title-p">会員登録</p>
