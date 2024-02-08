@@ -17,9 +17,7 @@ class WorkController extends Controller
     }
     public function create(Request $request) {
         $work = Carbon::now();
-        $work = $request->all();
-        $work->user_id = auth()->user()->id;
-        Work::create($work);
-        return redirect('/');
+        
+        return view('index',compact('work'));
         }
 }

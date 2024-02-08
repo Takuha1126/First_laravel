@@ -14,7 +14,7 @@ class RegisterUserController extends Controller
     public function register(Request $request){
             return view('auth.register');
     }
-    public function create(Request $request) {
+    public function create(RegisterRequest $request) {
     $user = Address::create([
         "name" => $request->name,
         "email" => $request->email,

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Fortify\Fortify;
 use App\Models\Address;
+use Illuminate\Http\Request;
 
 
 class AuthenticatedSessionController extends Controller
@@ -19,11 +20,10 @@ class AuthenticatedSessionController extends Controller
     }
     public function store(LoginRequest $request) {
         $user = Auth::user()->name;
-        dd($user);
         $email = $request->input('email');
         $password = $request->input('password');
         $hashedPassword = Address::where('email', $email)->first();
-         return view('index');
+         return view('auth.login');
 
 
         if($hashedPassword && Hash::check($password, $hashedPassword->password)){
@@ -31,6 +31,16 @@ class AuthenticatedSessionController extends Controller
         }else{
             return view('auth.login');
         }
+    }
        
-}
+
+    public function destroy(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+
+    }
+
 }

@@ -5,7 +5,11 @@
 @endsection
 
 @section('content')
+
 <div class="main">
+    @if (count($errors) > 0)
+    <p>入力に問題があります</p>
+    @endif
     <div class="main__inner">
         <div class="main__title">
             <p class="main__title-p">会員登録</p>
@@ -16,11 +20,26 @@
                 <div class="main__name">
                     <input type="text" name="name" placeholder="名前" value="{{ old('name') }}">
                 </div>
+                <div class="error">
+                @error('name')
+                {{$errors->first('name')}}
+                @enderror
+                </div>
                 <div class="main__email">
                     <input type="email" name="email" placeholder="メールアドレス" value="{{ old('email')}}">
                 </div>
+                <div class="error">
+                @error('email')
+                {{$errors->first('email')}}
+                @enderror
+                </div>
                 <div class="main__password">
                     <input type="password" name="password" placeholder="パスワード" >
+                </div>
+                <div class="error">
+                @error('password')
+                {{$errors->first('password')}}
+                @enderror
                 </div>
                 <div class="main__check">
                     <input type="password" name="password_confirmation" placeholder="確認用パスワード">

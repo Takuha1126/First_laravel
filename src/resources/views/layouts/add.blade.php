@@ -23,7 +23,7 @@
                     <a class="content__button">日付</a>
                 </form>
                 <form action="/logout" method="post">
-                    <a class="login__button" href="/login">ログアウト</a>
+                    <a class="login__button" href="/logout">ログアウト</a>
                 </form>
             </nav>
         </div>

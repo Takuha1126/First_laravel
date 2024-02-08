@@ -17,13 +17,15 @@ use App\Http\Controllers\ContentController;
 |
 */
 
-//Route::group(['middleware' => ['auth']], function () {
-    //Route::get('/', [WorkController::class, 'index'])->name('home');
-//});
-Route::get('/',[WorkController::class,'index']);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', [WorkController::class, 'index'])->name('home');
+});
+
 Route::post('/',[WorkController::class,'create']);
 Route::get('/login/{credentials', [AuthenticatedSessionController::class,'login']);
 Route::post('/login',[AuthenticatedSessionController::class,'store']);
+Route::get('/logout',[AuthenticatedSessionController::class,'destroy']);
+Route::post('/logout',[AuthenticatedSessionController::class,'destroy'])->middleware('auth');
 Route::get('/register',[RegisterUserController::class,'register']);
 Route::post('/register',[RegisterUserController::class,'create']);
 Route::get('/attendance',[ContentController::class,'attendance']);

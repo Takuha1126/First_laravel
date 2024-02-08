@@ -5,7 +5,11 @@
 @endsection
 
 @section('content')
+
 <div class="main">
+@if (count($errors) > 0)
+<p>入力に問題があります</p>
+@endif
     <div class="main__inner">
         <div class="main__title">
             <p class="main__title-ttl">ログイン</p>
@@ -13,11 +17,22 @@
         <div class="main__item">
             <form class="form" action="/login" method="post">
                 @csrf
+
                 <div class="main__item-email">
                     <input type="email" name="email" placeholder="メールアドレス" value="{{ old('email')}}">
                 </div>
+                <div class="error">
+                @error('email')
+                {{$errors->first('email')}}
+                @enderror
+                </div>
                 <div class="main__item-password">
                     <input type="password" name="password" placeholder="パスワード">
+                </div>
+                <div class="error">
+                @error('password')
+                {{$errors->first('password')}}
+                @enderror
                 </div>
                 <div class="button">
                     <button class="button__submit" type="submit">ログイン</button>
