@@ -22,6 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::post('/',[WorkController::class,'create']);
+Route::post('/',[WorkController::class,'store']);
 Route::get('/login/{credentials', [AuthenticatedSessionController::class,'login']);
 Route::post('/login',[AuthenticatedSessionController::class,'store']);
 Route::get('/logout',[AuthenticatedSessionController::class,'destroy']);

@@ -18,6 +18,8 @@ class CreateWorksTable extends Migration
             $table->foreignID('user_id');
             $table->dateTime('start_time')->nullable();
             $table->dateTime('end_time')->nullable();
+            $table->dateTime('rest_time')->nullable();
+            $table->dateTime('work_time')->nullable();
             $table->timestamps();
         });
     }
