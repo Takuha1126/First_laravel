@@ -9,6 +9,6 @@ class Work extends Model
 {
     use HasFactory;
     protected $table = 'works';
-    protected $fillable = ['user_id','start_time','end_time','rest_time','work_time'];
+    protected $fillable = ['user_id','start_time','end_time'];
     
 }

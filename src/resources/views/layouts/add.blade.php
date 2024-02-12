@@ -26,6 +26,11 @@
                     <a class="login__button" href="/logout">ログアウト</a>
                 </form>
             </nav>
+            @if (session('message'))
+                <div class="message">
+                    {{session('message')}}
+                </div>
+            @endif
         </div>
         
     </header>

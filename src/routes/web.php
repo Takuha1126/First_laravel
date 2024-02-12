@@ -22,8 +22,9 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::post('/',[WorkController::class,'create']);
-Route::post('/',[WorkController::class,'store']);
-Route::get('/login/{credentials', [AuthenticatedSessionController::class,'login']);
+Route::post('/end',[WorkController::class,'store']);
+
+Route::get('/login/{credentials}', [AuthenticatedSessionController::class,'login']);
 Route::post('/login',[AuthenticatedSessionController::class,'store']);
 Route::get('/logout',[AuthenticatedSessionController::class,'destroy']);
 Route::post('/logout',[AuthenticatedSessionController::class,'destroy'])->middleware('auth');
@@ -31,6 +32,6 @@ Route::get('/register',[RegisterUserController::class,'register']);
 Route::post('/register',[RegisterUserController::class,'create']);
 Route::get('/attendance',[ContentController::class,'attendance']);
 Route::post('/attendance',[ContentController::class,'store']);
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

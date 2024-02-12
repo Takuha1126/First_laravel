@@ -22,7 +22,7 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user()->name;
         $email = $request->input('email');
         $password = $request->input('password');
-        $hashedPassword = Address::where('email', $email)->first();
+        $hashedPassword = Auth::where('email', $email)->first();
          return view('auth.login');
 
 

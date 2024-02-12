@@ -13,10 +13,10 @@ class ContentController extends Controller
     }
     
     public function store(Request $request){
-        $author = $request->all();
-        Work::create($author);
+        $authors = Work::all();
+        dd($authors);
 
-        return redirect('attendance');
+        return view ('attendance',compact('authors'));
 
 
     }

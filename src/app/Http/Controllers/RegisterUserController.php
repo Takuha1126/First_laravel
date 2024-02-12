@@ -15,7 +15,7 @@ class RegisterUserController extends Controller
             return redirect('auth.register');
     }
     public function create(RegisterRequest $request) {
-    $user = Address::create([
+    $user = Auth::create([
         "name" => $request->name,
         "email" => $request->email,
         "password" => Hash::make($request->password),
