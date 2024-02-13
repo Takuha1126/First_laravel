@@ -99,7 +99,7 @@ class WorkController extends Controller
         $breakTime = Work::where('user_id',$user->id)->latest()->first();
         $breakIn = new Carbon($breakTime->breakIn);
         $breakOut = new Carbon($breakTime->breakOut);
-        $rest_time =$breakIn->diffInMinutes($breakOut);
+        $rest_time = $breakIn->diffInMinutes($breakOut);
 
         $rest_time->update([
             'rest_time' => $rest_time

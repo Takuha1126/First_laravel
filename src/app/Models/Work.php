@@ -11,4 +11,8 @@ class Work extends Model
     protected $table = 'works';
     protected $fillable = ['user_id','start_time','end_time'];
     
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

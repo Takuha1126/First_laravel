@@ -19,17 +19,17 @@
                 <th class="main__table-th">勤務終了</th>
                 <th class="main__table-th">休憩時間</th>
                 <th class="main__table-th">勤務時間</th>
-            </tr>
+            </tr> 
             @foreach($authors as $author)
             <tr class="main__table-about">
                 <td class="main__table-td">
-                    <input  type="text" name="name" value="{{$authors['name']}}">
+                    <input  type="text" name="name" value="{{$author['name']}}">
                 </td>
                 <td class="main__table-td">
-                    <input type="type" name="start__time" value="{{$authors['start_time']}}">
+                    <input type="type" name="start__time" value="{{$author->works->start_time}}">
                 </td>
                 <td class="main__table-td">
-                    <input type="type" name="end__time" value="{{$authors['end_time']}}">
+                    <input type="type" name="end__time" value="{{$author->works->end_time}}">
                 </td>
                 <td class="main__table-td">
                     <input type="type" name="rest__time" value="サンプルテキスト">
@@ -42,7 +42,7 @@
         </table>
     </div>
     <div class="last__page">
-        <p>{{ $authors->links('vendor.pagination.bootstrap-4') }}</p>
+       
     </div>
     </div>
 </div>
