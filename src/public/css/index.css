@@ -37,6 +37,10 @@ text-align: center;
     height: 200px;
     font-size: 20px;
 }
+.break{
+    display: flex;
+    justify-content: center;
+}
 .rest__start-button {
     margin-right: 30px;
     width: 400px;

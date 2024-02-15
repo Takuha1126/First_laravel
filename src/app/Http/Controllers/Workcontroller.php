@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Work;
 use App\Models\Address;
+use App\Models\Stop;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -93,20 +94,57 @@ class WorkController extends Controller
         
 
 
-    public function break()
+    public function breakIn(Request $request)
     {
         $user = Auth::user();
-        $breakTime = Work::where('user_id',$user->id)->latest()->first();
-        $breakIn = new Carbon($breakTime->breakIn);
-        $breakOut = new Carbon($breakTime->breakOut);
-        $rest_time = $breakIn->diffInMinutes($breakOut);
-
-        $rest_time->update([
-            'rest_time' => $rest_time
-        ]);
+        $break = Stop::where('user_id',$user->id)->latest()->first();
+        if($break) {
+            $break->update(['breakIn' => now()]);
+        }else{
+            Stop::create([
+                'user_id' => $user->id,
+                'breakIn' => now(),
+            ]);
+        }
         return redirect()->back();
+    }
+
+    
+    public function breakOut(Request $request)
+{
+    $user = Auth::user();
+    $break = Stop::where('user_id', $user->id)->latest()->first();
+
+    $breakOut = now();
+
+    if ($break) {
+        $startTime = $break->breakIn;
+        $startTime = \Carbon\Carbon::parse($startTime);
+        $breakOut = now();
+        $rest_time = $startTime->diffInMinutes($breakOut);
+
+        $break->update([
+            'breakOut' => $breakOut,
+            'rest_time' => $rest_time,
+        ]);
+    } else {
+        $breakIn = now();
+        $rest_time = 0;
+        $breakOut = now();
+        $rest_time = $breakIn->diffInMinutes($breakOut);
+        $break = Stop::create([
+            'user_id' => $user->id,
+            'breakIn' => null,
+            'breakOut' => $breakOut,
+            'rest_time' => $rest_time,
+        ]);
+    }
+
+    return view('attendance', ['breaks' => $breaks]);
+}
+
 
     }
 
     
-}
+

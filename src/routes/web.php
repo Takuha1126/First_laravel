@@ -23,7 +23,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::post('/',[WorkController::class,'create']);
 Route::post('/end',[WorkController::class,'store']);
-Route::post('/rest',[WorkController::class,'break']);
+Route::post('/restIn',[WorkController::class,'breakIn']);
+Route::post('/restOut',[WorkController::class,'breakOut']);
 
 Route::get('/login/{credentials}', [AuthenticatedSessionController::class,'login']);
 Route::post('/login',[AuthenticatedSessionController::class,'store']);
@@ -32,6 +33,7 @@ Route::post('/logout',[AuthenticatedSessionController::class,'destroy'])->middle
 Route::get('/register',[RegisterUserController::class,'register']);
 Route::post('/register',[RegisterUserController::class,'create']);
 Route::get('/attendance',[ContentController::class,'attendance']);
+Route::get('/rest_time',[ContentController::class,'create']);
 Route::post('/attendance',[ContentController::class,'store']);
 
 

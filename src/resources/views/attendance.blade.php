@@ -23,26 +23,31 @@
             @foreach($authors as $author)
             <tr class="main__table-about">
                 <td class="main__table-td">
-                    <input  type="text" name="name" value="{{$author['name']}}">
+                    <input  type="text" name="name" value="{{$author->user->name}}">
                 </td>
                 <td class="main__table-td">
-                    <input type="type" name="start__time" value="{{$author->works->start_time}}">
+                    <input type="type" name="start__time" value="{{$author->start_time}}">
                 </td>
                 <td class="main__table-td">
-                    <input type="type" name="end__time" value="{{$author->works->end_time}}">
+                    <input type="type" name="end__time" value="{{$author->end_time}}">
+                </td>
+
+                <td class="main__table-td">
+                    @foreach($breaks as $break)
+                    @if($break->user_id == $author->user_id)
+                    <input type="type" name="rest__time" value="{{$break->rest_time}}">
+                    @endif
+                    @endforeach
                 </td>
                 <td class="main__table-td">
-                    <input type="type" name="rest__time" value="サンプルテキスト">
-                </td>
-                <td class="main__table-td">
-                    <input type="type" name="work__time" value="サンプルテキスト">
+                    <input type="type" name="work__time" value="{{$author->mark_time}}">
                 </td>
             </tr>
             @endforeach
         </table>
     </div>
     <div class="last__page">
-       
+       <p>{{$authors->links('vendor.pagination.bootstrap-4')}}</p>
     </div>
     </div>
 </div>

@@ -9,10 +9,11 @@ class Work extends Model
 {
     use HasFactory;
     protected $table = 'works';
-    protected $fillable = ['user_id','start_time','end_time'];
+    protected $fillable = ['user_id','start_time','end_time','work_time'];
     
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
+    
 }

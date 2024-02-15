@@ -12,20 +12,19 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class ContentController extends Controller
 {
     public function attendance() {
-        $works = Work::paginate(5);
-        $user = User::all()->first;
-        $authors = $user->works;
-
-
-        return view ('attendance',compact('authors'));
+        $authors = Work::paginate(5);
+        $this->date['authors']=$authors;
+        return view('attendance',['authors'=>$authors]);
+}
+    public function create() {
+        $breaks = Work::paginate(5);
+        return view('attendance', ['breaks' => $breaks]);
     }
-    
+
     public function store(Request $request){
-        $name = User::all()->first;
-        $works = $name->works;
-
-        return redirect('attendance',compact('works'));
-
-
+        $this->validate($request);
+        $form = $request->all();
+        Work::create($form);
+        return redirect('attendance');
     }
 }

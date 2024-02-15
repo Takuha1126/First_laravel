@@ -45,7 +45,7 @@ class User extends Authenticatable
 
 
     public function works() {
-        return $this->hasOne(Work::class);
+        return $this->hasMany(Work::class);
     }
 
 }

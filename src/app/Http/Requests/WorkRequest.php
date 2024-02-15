@@ -24,8 +24,8 @@ class WorkRequest extends FormRequest
     public function rules()
     {
         return [
-            'start_time' => 'nullable|date_format:"H:i:s"',
-            'end_time' => 'nullable|date_format:"H:i:s"|after:start_time'
+            'start_time' => 'nullable|date_format:"Y-m-d H:i:s"',
+            'end_time' => 'nullable|date_format:"Y-m-d H:i:s"|after:start_time'
         ];
     }
 }
